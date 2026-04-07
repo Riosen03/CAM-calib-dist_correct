@@ -3,6 +3,7 @@
 ## 개요
 
 OpenCV를 활용하여 카메라의 내부 파라미터(Intrinsic Parameters)를 산출(CAM_calib.py)
+
 산출된 데이터를 바탕으로 렌즈의 기하학적 왜곡을 제거(CAM_dist_cor.py)
 
 ---
@@ -39,13 +40,15 @@ Original vs Rectified
 
 **RMSE (Root Mean Square Error)**
 
-0.9449475411854398RMSE 값이 1.0 미만으로 산출, 매우 높은 신뢰도의 캘리브레이션이 이루어졌음을 확인
+0.9449475411854398RMSE 값이 1.0 미만으로 산출, 높은 신뢰도의 캘리브레이션이 이루어졌음을 확인
+
 
 **Intrinsic Parameters**
 
-$$K = \begin{bmatrix} 893.73 & 0 & 692.07 \\ 0 & 892.10 & 741.46 \\ 0 & 0 & 1 \end{bmatrix}$$
+K = [[893.73 , 0 , 692.07] , [0 , 892.10 , 741.46] , [0 , 0 , 1]]
 Focal Length ($f_x, f_y$): 893.73, 892.10
 Principal Point ($c_x, c_y$): 692.07, 741.46
+
 
 **Distortion Coefficients**
 
