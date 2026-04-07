@@ -10,9 +10,11 @@ OpenCV를 활용하여 카메라의 내부 파라미터(Intrinsic Parameters)를
 ## Demo
 
 내부 파라미터 산출
+
 ![calib](images/calib.png)
 
 Original vs Rectified
+
 ![dist_cor](images/dist_cor.png)
 
 ---
@@ -54,19 +56,8 @@ Principal Point ($c_x, c_y$): 692.07, 741.46
 
 알고리즘 자체의 유효성을 검증하기 위해 실제 방사왜곡이 뚜렷하게 존재하는 레퍼런스 데이터(mint-lab github)를 사용하여 교차 검증을 진행했고,  그 결과(아래 스크린샷 참고) 곡선으로 휘어져 있던 체스판의 격자가 완벽한 일직선으로 보정되는 것을 확인.
 
----
-
-## screenshots
-
-내부 파라미터 산출
-![calib](images/calib.png)
-
-Original vs Rectified
-![dist_cor](images/dist_cor.png)
-
-add.) video from 'https://github.com/mint-lab/3dv_tutorial/blob/master/data/chessboard.avi'
+addtional screenshot) video from 'https://github.com/mint-lab/3dv_tutorial/blob/master/data/chessboard.avi'
 ![image](images/image.png) 
-
 
 ---
 
