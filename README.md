@@ -28,7 +28,7 @@ Original vs Rectified
    - 수집된 2D-3D 매칭 데이터를 'cv.calibrateCamera' 함수에 입력하여 카메라 행렬(K)과 왜곡 계수(dist)를 산출, 'calib_result.npz'로 저장
 
 3. 왜곡 보정 적용 (CAM_dist_cor.py)
-   - 저장된 파라미터를 로드하고, 'cv.initUndistortRectifyMa'p'으로 픽셀 매핑 정보(map1, map2)를 1회 연산하여 캐싱
+   - 저장된 파라미터를 로드하고, 'cv.initUndistortRectifyMap'으로 픽셀 매핑 정보(map1, map2)를 1회 연산하여 캐싱
    - 'cv.remap'을 사용하여 매 프레임 실시간으로 왜곡을 보정하고 원본 프레임과 비교 출력
 
 ---
@@ -75,30 +75,3 @@ add.) video from 'https://github.com/mint-lab/3dv_tutorial/blob/master/data/ches
   * Course : Geometric Image Formation (Prof. Sunglok Choi / https://github.com/mint-lab/)
   * Dataset : Personal Smartphone Camera & Video from https://github.com/mint-lab/
   * Algorithm : Zhang's Method (OpenCV `calibrateCamera`)
-
-
-
-
-
-
-## 동작 과정
-
-1. 캘리브레이션 이미지 수집 (`CAM_calib.py`)
-   - 촬영된 체스보드 영상(`chessboard_video.mp4`)을 프레임 단위로 재생
-   - 사용자가 원하는 프레임을 선택하여 `cv.findChessboardCorners`를 통해 10x7 패턴의 2D 코너점(Image Points)을 추출
-   - 실제 체스보드 칸의 크기(0.025m)를 반영하여 3D 공간 좌표(Object Points)를 생성
-
-2. 카메라 파라미터 산출
-   - 수집된 2D-3D 매칭 데이터를 `cv.calibrateCamera` 함수에 입력하여 카메라 행렬(K)과 왜곡 계수(dist)를 산출, `calib_result.npz`로 저장
-
-3. **왜곡 보정 적용 (`CAM_dist_cor.py`)**
-   - 저장된 파라미터를 로드하고, `cv.initUndistortRectifyMap`으로 픽셀 매핑 정보(map1, map2)를 1회 연산하여 캐싱
-   - `cv.remap`을 사용하여 매 프레임 실시간으로 왜곡을 보정하고 원본 프레임과 비교 출력
-
-
-
-   ## 결론
-
-본 프로젝트의 내부 파라미터 산출 결과(RMSE 0.94)는 신뢰도 높은 수준으로 측정되었습니다. 다만, 실험에 사용된 개인 스마트폰 카메라 영상의 경우 기기 내부 ISP(Image Signal Processor)에서 이미 렌즈 왜곡 보정을 자체적으로 수행한 상태였기 때문에, 산출된 캘리브레이션을 이중 적용했을 때 역으로 핀쿠션(Pincushion) 형태의 왜곡이 발생하는 흥미로운 현상을 관찰할 수 있었습니다. 
-
-이러한 하드웨어적 변수를 배제하고 알고리즘 자체의 유효성을 검증하기 위해, 실제 방사왜곡이 뚜렷하게 존재하는 레퍼런스 데이터(mint-lab github 제공)를 사용하여 교차 검증을 진행했습니다. 그 결과(아래 스크린샷 참고), 곡선으로 휘어져 있던 체스판의 격자가 완벽한 일직선으로 보정되는 것을 확인하여 프로그램이 정상적으로 동작함을 입증하였습니다.
