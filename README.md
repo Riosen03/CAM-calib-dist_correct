@@ -38,14 +38,17 @@ Original vs Rectified
 ### Calibration Results
 
 **RMSE (Root Mean Square Error)**
+
 0.9449475411854398RMSE 값이 1.0 미만으로 산출, 매우 높은 신뢰도의 캘리브레이션이 이루어졌음을 확인
 
 **Intrinsic Parameters**
+
 $$K = \begin{bmatrix} 893.73 & 0 & 692.07 \\ 0 & 892.10 & 741.46 \\ 0 & 0 & 1 \end{bmatrix}$$
 Focal Length ($f_x, f_y$): 893.73, 892.10
 Principal Point ($c_x, c_y$): 692.07, 741.46
 
 **Distortion Coefficients**
+
 [-0.03152744, 0.11528394, -0.0015801, 0.00411445, -0.09388038]
 
 ---
