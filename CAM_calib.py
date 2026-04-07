@@ -71,11 +71,11 @@ if len(images) > 0:
     img_points = [cv.findChessboardCorners(cv.cvtColor(i, cv.COLOR_BGR2GRAY), board_pattern)[1] for i in images]
 
     # 상수값 계산
-    rms, K, dist, rvecs, tvecs = cv.calibrateCamera(obj_points, img_points, gray_shape, None, None)
+    rmse, K, dist, rvecs, tvecs = cv.calibrateCamera(obj_points, img_points, gray_shape, None, None)
 
     # 결과 출력
     print("\n[result]")
-    print(f"RMS Error : {rms}")
+    print(f"RMS Error : {rmse}")
     print(f"K Matrix :\n{K}")
     print(f"Distortion Coefficients : {dist.flatten()}")
     
